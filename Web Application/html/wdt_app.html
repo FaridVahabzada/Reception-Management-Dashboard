@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="description" content="Reception Management Dashboard">
+        <meta name="keywords" content="reception, management, dashboard">
+        <meta name="author" content="Farid Vahabzada">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.min.css"> <!-- Bootstrap Icons CDN -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
+          crossorigin="anonymous"> <!-- Bootstrap CDN -->
+
+        <link rel="stylesheet" href="../css/wdt_app.css"> <!-- CSS file location -->
+
+        <title>Reception Management Dashboard</title>
+
+        <!-- This part is for the FAVICON of the web application -->
+        <link rel="apple-touch-icon" sizes="180x180" href="../favicon/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="../favicon/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="../favicon/favicon-16x16.png">
+        <link rel="manifest" href="../favicon/site.webmanifest">
+        <link rel="mask-icon" href="../favicon/safari-pinned-tab.svg" color="#5bbad5">
+        <meta name="msapplication-TileColor" content="#da532c">
+        <meta name="theme-color" content="#ffffff">
+    </head>
+
+    <body>
+
+        <!-- Navigation Bar Section -->
+        <nav id="navbar" class="navbar navbar-expand-lg mb-4">
+            <div class="container-fluid">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false"
+                 aria-label="Toggle navigation">
+                    <div class="navbar-toggler-icon"></div>
+                </button>
+                <div class="collapse navbar-collapse justify-content-start" id="navbarContent">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link active" id="Dashboard" aria-current="page" href="#homeDashboard" tabindex="0">Dashboard</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link" href="#" id="navbarDropdown1" role="button" data-bs-toggle="dropdown" aria-expanded="false" tabindex="-1">Inventory</a>
+                            <ul class="dropdown-menu" id=dropdownMenu1 aria-labelledby="navbarDropdown1">
+                                <li><a class="dropdown-item" href="#">Search</a></li>
+                                <li><a class="dropdown-item" href="#">Add</a></li>
+                                <li><a class="dropdown-item" href="#">Remove</a></li>
+                            </ul>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link" href="#" id="navbarDropdown2" role="button" data-bs-toggle="dropdown" aria-expanded="false" tabindex="-1">Orders</a>
+                            <ul class="dropdown-menu" id=dropdownMenu2 aria-labelledby="navbarDropdown2">
+                                <li><a class="dropdown-item" href="#">Search</a></li>
+                                <li><a class="dropdown-item" href="#">Add</a></li>
+                                <li><a class="dropdown-item" href="#">Remove</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        
+        <div id="container">
+
+            <div id="homeDashboard" class="container text-center border border-1 border-dark rounded overflow-auto float-start">
+
+                <!-- Homepage Section -->
+                <div>
+                    <h1 class="mt-5 text-center position-relative" id="pageName">
+                        <a href="#homeDashboard">
+                            <img src="../logo/Company logo no background.png" alt="WDT logo" width="18%" height="100%" class="pb-2 position-absolute start-0">
+                        </a>
+                        Reception Management Dashboard
+                    </h1>
+                </div>
+
+                <!-- Staff Section -->
+                <div class="pb-2"><h1>Staff</h1></div>
+
+                <div class="overflow-auto">
+                    <div class="allTables">
+                        <table id="staffTable">
+                            <thead id="staffTableHeader">
+                                <tr>
+                                    <th style="width: 10%" scope="col">Picture</th>
+                                    <th style="width: 10%" scope="col">Name</th>
+                                    <th style="width: 10%" scope="col">Surname</th>
+                                    <th style="width: 30%" scope="col">Email address</th>
+                                    <th style="width: 9%" scope="col">Status</th>
+                                    <th style="width: 10%" scope="col">Out Time</th>
+                                    <th style="width: 10%" scope="col">Duration</th>
+                                    <th style="width: 11%" scope="col">Expected Return Time</th>
+                                </tr>
+                            </thead>
+                            <tbody id="staffTableBody"></tbody>
+                        </table>
+                    </div>
+                    <span>
+                        <button class="float-start" id="negativeOut">Out</button>
+                        <button class="float-end" id="positiveIn">In</button>
+                    </span>
+                </div>
+
+                <!-- Schedule Delivery Section -->
+                <div class="pb-2"><h1>Schedule Delivery</h1></div>
+
+                <div class="overflow-auto">
+                    <div class="allTables">
+                        <table id="scheduleDelivery">
+                            <thead id="scheduleDeliveryHeader">
+                                <tr>
+                                    <th style="width: 15%" scope="col">Vehicle</th>
+                                    <th style="width: 15%" scope="col">Name</th>
+                                    <th style="width: 15%" scope="col">Surname</th>
+                                    <th style="width: 15%" scope="col">Telephone</th>
+                                    <th style="width: 25%" scope="col">Delivery Address</th>
+                                    <th style="width: 15%" scope="col">Return Time</th>
+                                </tr>
+                            </thead>
+                            <tbody id="scheduleDeliveryBody">
+                                <tr>
+                                    <form name="myForm">
+                                        <td id="vehicleCell">
+                                            <select class="form-select" id="vehicleType" name="Vehicle">
+                                                <option id="selectType" value="selectType" data-hidden="true">Vehicle Type</option>
+                                                <option id="car" value="&#xF7E1;">&#xF7E1; &nbsp; Car</option>
+                                                <option id="motorcycle" value="&#xF18D;">&#xF18D; &nbsp; Motorcycle</option>
+                                            </select>
+                                        </td>
+                                        <td id="nameCell">
+                                            <input type="text" id="name" name="Name" style="text-transform: capitalize;">
+                                        </td>
+                                        <td id="surnameCell">
+                                            <input type="text" id="surname" name="Surname" style="text-transform: capitalize;">
+                                        </td>
+                                        <td id="telephoneCell">
+                                            <input type="text" id="telephone" name="Telephone">
+                                        </td>
+                                        <td id="deliveryAddressCell">
+                                            <input type="text" id="deliveryAddress" name="Delivery Address" style="text-transform: capitalize;">
+                                        </td>
+                                        <td id="returnTimeCell">
+                                            <input type="time" id="returnTime" name="Return Time">
+                                        </td>
+                                    </form>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                        <button class="float-end" id="positiveAdd">Add</button>
+                </div>
+
+                <!-- Delivery Board Section -->
+                <div class="pb-2"><h1>Delivery Board</h1></div>
+
+                <div class="overflow-auto">
+                    <div class="allTables">
+                        <table id="deliveryBoard">
+                            <thead id="deliveryBoardHeader">
+                                <tr>
+                                    <th style="width: 15%" scope="col">Vehicle</th>
+                                    <th style="width: 15%" scope="col">Name</th>
+                                    <th style="width: 15%" scope="col">Surname</th>
+                                    <th style="width: 15%" scope="col">Telephone</th>
+                                    <th style="width: 25%" scope="col">Delivery Address</th>
+                                    <th style="width: 15%" scope="col">Return Time</th>
+                                </tr>
+                            </thead>
+                            <tbody id="deliveryBoardBody"></tbody>
+                        </table>
+                    </div>
+                        <button class="float-end" id="negativeClear">Clear</button>
+                </div>
+
+                <!-- Digital Clock Section -->
+                <div class="float-end mt-3 mb-2" id="digitalClock"></div>
+
+            </div>
+
+            <!-- Toast Section -->
+            <div id="toastPart" class="float-end">
+                <div id="mainToastArea" aria-live="polite" aria-atomic="true" class="position-relative">
+                    <div id="toastsAddHere" class="toast-container position-absolute top-0 end-0 ps-1"></div>
+                </div>
+            </div>
+        </div>
+
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script> <!-- jQuery CDN -->
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> <!-- sweetalert2 CDN -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+          crossorigin="anonymous"></script> <!-- Bootstrap CDN -->
+        
+        <script src="../js/wdt_app.js"></script> <!-- JavaScript file location -->
+    </body>
+</html>
